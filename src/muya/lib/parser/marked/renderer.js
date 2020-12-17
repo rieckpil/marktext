@@ -66,14 +66,13 @@ Renderer.prototype.code = function (code, infostring, escaped, codeBlockStyle) {
     }
   }
 
-  let className = codeBlockStyle === 'fenced' ? 'fenced-code-block' : 'indented-code-block'
-  className = lang ? `${className} ${this.options.langPrefix}${escape(lang, true)}` : className
+  let className = `lang:${escape(lang, true)} decode:true`
 
-  return '<pre><code class="' +
+  return '<pre class="' +
     className +
     '">' +
     (escaped ? code : escape(code, true)) +
-    '</code></pre>\n'
+    '</pre>\n'
 }
 
 Renderer.prototype.blockquote = function (quote) {
